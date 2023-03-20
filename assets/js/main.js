@@ -1,6 +1,10 @@
 const mario = document.querySelector(".mario-gif")
 const pipe = document.querySelector(".pipe-img")
 const cloud = document.querySelector(".cloud")
+const buttonRestart = document.querySelector("#reload")
+
+const p = document.querySelector("#score")
+
 const jumpMario =  () => {
     mario.classList.add("jump")
     setTimeout(()=>{
@@ -12,6 +16,7 @@ const loop = setInterval(()=> {
     const pipePosition = pipe.offsetLeft
     const cloudPosition = cloud.offsetLeft
     const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', '')
+    
     console.log(marioPosition)
         if(pipePosition <= 61 && pipePosition > 0 && marioPosition < 85) {
 
@@ -25,13 +30,25 @@ const loop = setInterval(()=> {
             mario.style.bottom = `${marioPosition}px`
 
             mario.src = `./assets/img/gamer-over.png`
-            mario.style.width = `55px`
-            mario.style.marginLeft = `20px`
+            mario.style.width = `5.5rem`
+            mario.style.marginLeft = `2rem`
             
-            clearInterval(loop)
-        }
-        
-}, 10)
+            buttonRestart.style.display = `flex`
+            buttonRestart.style.background= `none`
+            buttonRestart.addEventListener('click', () => {location.reload()})
+            clearInterval(loop, score)
+        }        
+}, 25)
+
+let counter = 0
+const score = setInterval (()=>{
+    const pipePosition = pipe.offsetLeft
+    if(pipePosition <=  0){
+        ++counter
+        p.innerText = `${counter}`
+        console.log(pipePosition)
+    }
+}, 100)
 
 document.addEventListener("keydown", jumpMario)
 document.addEventListener("touchstart", jumpMario)

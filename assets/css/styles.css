@@ -1,3 +1,4 @@
+@import url('https://fonts.cdnfonts.com/css/8bit-wonder');
 * {
     margin: 0;
     padding: 0;
@@ -19,13 +20,21 @@ img {
     overflow: hidden;
 }
 
+#score {
+    font-family: '8BIT WONDER', sans-serif;
+    color: white;
+    -webkit-text-stroke: .4rem black;
+    font-size: 4rem;
+    padding: 2rem;
+}
+
 .cloud {
     width: 55.5rem;
     animation: cloud-animation 15s infinite linear;
 }
 
 .pipe-img {
-    top: 82%;
+    bottom: 0;
     width: 12rem;
     animation: pipe-animation 2s infinite linear;
 }
@@ -37,6 +46,17 @@ img {
 
 .jump {
     animation: mario-jump 500ms ease-out;
+}
+
+#reload {
+    display: none;
+    background: none;
+    margin: 25rem auto;
+    width: 8rem;
+}
+
+#reload img {
+    width: auto ;
 }
 
 @keyframes cloud-animation {
