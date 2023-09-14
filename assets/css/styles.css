@@ -102,3 +102,11 @@ img {
         bottom: 0;
     }
 }
+
+@media (max-width: 500px) {
+    .pipe-img {
+        bottom: 0;
+        width: 12rem;
+        animation: pipe-animation 1.3s infinite linear;
+    }
+}
