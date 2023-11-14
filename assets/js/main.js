@@ -9,6 +9,7 @@ const jumpMario =  () => {
     mario.classList.add("jump")
     setTimeout(()=>{
         mario.classList.remove("jump")
+        canScore = true;
     }, 500)
 }
 
@@ -41,11 +42,13 @@ const loop = setInterval(()=> {
 }, 25)
 
 let counter = 0
+let canScore = true;
 const score = setInterval (()=>{
     const pipePosition = pipe.offsetLeft
-    if(pipePosition <=  0){
+    if(pipePosition <=  0 && canScore){
         ++counter
         p.innerText = `${counter}`
+        canScore = false;
         console.log(pipePosition)
     }
 }, 100)
